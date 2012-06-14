@@ -25,7 +25,7 @@ Thus, you can stick (something like) the following in your xmobarrc:
     }
 
 
-## Description ## 
+## Description ##
 
 Why not show some info about the markets in xmobar? This script lets you 
 easily keep track of all the money you're losing. I cannot be held responsible
