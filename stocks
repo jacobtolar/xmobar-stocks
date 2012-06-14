@@ -1,0 +1,95 @@
+#!/usr/bin/perl
+
+=head1 NAME
+
+xmobar-stocks - fetch stock info for xmobar
+
+=head1 SYNOPSIS
+
+    stocks "jpm$" "^ixic%"
+
+=cut
+
+
+
+# A few of the symbols
+# from:  www.gummy-stuff.org/Yahoo_data.htm
+# s = symbol
+# o = open price
+# b2 = ask (realtime)
+# k2 = change % (realtime)
+# c = change and % change
+# p = previous close
+# c1 = change
+# p2 = percent change
+# a = ask
+
+$format = "sb2c1p2";
+@symbols = ();
+@names = ();
+@formats = ();
+
+foreach(@ARGV) {
+  /([^=]*)=?(.*)?(.)$/;
+  #print $1 . " " . $2;
+  #print "\n";
+
+  push @symbols, $1;
+  push @names,   $2;
+  push @formats, $3;
+}
+
+$symbols = join "+",@symbols;
+
+$res = `curl -s "http://download.finance.yahoo.com/d/quotes.csv?s=$symbols&f=$format"`;
+
+
+#print $res;
+# line ends in \r\n or something stupid like that
+
+$res =~ s/\r//g;
+$res =~ s/"//g;
+
+@items = split "\n", $res;
+
+$i = 0;
+foreach (@items) {
+$name;
+	@ret = split /,/;
+
+if ($names[$i] ne '') {
+  $name = $names[$i] 
+} else {
+  $name = $ret[0];
+}
+
+	print $name . ":" ;
+if ($formats[$i] eq "\$" or $formats[$i] eq '') {
+	if ($ret[2] > 0) {
+	  print "<fc=#00ff00>" . $ret[1] . "</fc>";
+	} else {
+	  print "<fc=#ff0000>" . $ret[1] . "</fc>";
+	}
+} elsif ($formats[$i] eq "+") { 
+	if ($ret[2] > 0) {
+	  print "<fc=#00ff00>" . $ret[2] . "</fc>";
+	} else {
+	  print "<fc=#ff0000>" . $ret[2] . "</fc>";
+	}
+} elsif ($formats[$i] eq "%") {
+	if ($ret[2] > 0) {
+	  print "<fc=#00ff00>" . $ret[3] . "</fc>";
+	} else {
+	  print "<fc=#ff0000>" . $ret[3] . "</fc>";
+	}
+} else {
+
+}
+print " | ";
+
+$i = $i + 1;
+ 
+}
+#s/"//g;
+
+print "\n"
