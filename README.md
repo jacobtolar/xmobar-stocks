@@ -55,6 +55,12 @@ where:
   * %: price change (%)
   * +: price change (absolute)
 
+Thus: 
+
+    "^ixic=NASDAQ%"
+
+will yield the percentage change of NASDAQ and will be renamed to `NASDAQ` 
+instead of `^ixic`.
 
 ### Customizing ###
 
