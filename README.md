@@ -65,7 +65,7 @@ instead of `^ixic`.
 ### Customizing ###
 
 The script is pretty short and self-explanatory. See the following for a
-reference on the Yahoo finance API: L<http://www.gummy-stuff.org/Yahoo_data.htm>
+reference on the Yahoo finance API: http://www.gummy-stuff.org/Yahoo_data.htm
 
 For convenience a few are listed here: 
 
