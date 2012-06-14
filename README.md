@@ -29,11 +29,12 @@ Thus, you can stick (something like) the following in your xmobarrc:
 
 Why not show some info about the markets in xmobar? This script lets you 
 easily keep track of all the money you're losing. I cannot be held responsible
-for any sadness that may arise from this realization. 
+for any sadness that may arise from this realization (that you're losing
+lots of money). 
 
 I'm really not sure why this isn't built into xmobar, but oh well. This script
-because I didn't want to have to recompile xmobar from source to add this 
-functionality. Unless I'm missing something (likely: most things in Haskell
+exists because I didn't want to have to recompile xmobar from source to add 
+this functionality. Unless I'm missing something (likely: most things in Haskell
 are a bit over my head), it seems like you need to recompile xmobar to add 
 another plugin. This seems a little silly to me...
 
