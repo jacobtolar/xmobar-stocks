@@ -3,13 +3,15 @@ xmobar-stocks
 
 quick and dirty perl script to show market info in xmobar.
 
-=head1 SYNOPSIS
+## Synopsis ##
 
-    stocks "jpm$" "^ixic=NASDAQ%"
+To run on the command line:
+
+    xmobar-stocks "jpm$" "^ixic=NASDAQ%"
 
     JPM:<fc=#00ff00>34.37</fc> | NASDAQ:<fc=#ff0000>-0.86%</fc> | 
 
-Stick (something like) the following in your xmobarrc:
+Thus, you can stick (something like) the following in your xmobarrc:
 
 
     Config { 
@@ -23,7 +25,7 @@ Stick (something like) the following in your xmobarrc:
     }
 
 
-=head1 DESCRIPTION
+## Description ## 
 
 Why not show some info about the markets in xmobar? This script lets you 
 easily keep track of all the money you're losing. I cannot be held responsible
@@ -35,21 +37,38 @@ functionality. Unless I'm missing something (likely: most things in Haskell
 are a bit over my head), it seems like you need to recompile xmobar to add 
 another plugin. This seems a little silly to me...
 
-=head2 Customizing
+### Syntax ###
+The syntax is as follows: 
+
+    xmobar-stocks [ ... ]
+
+It accepts a list of arguments in the following form:
+
+    SYM[=alias]{$%+}
+
+where: 
+
+* SYM = stock symbol
+* alias -- optional -- an optional alias to print instead of the symbol 
+* {$%+}: Choose one (and only one) of these modifiers. 
+  * $: ask [realtime] 
+  * %: price change (%)
+  * +: price change (absolute)
+
+
+### Customizing ###
 
 The script is pretty short and self-explanatory. See the following for a
 reference on the Yahoo finance API: L<http://www.gummy-stuff.org/Yahoo_data.htm>
 
 For convenience a few are listed here: 
 
-=over 4
-
-=item * s = symbol
-=item * o = open price
-=item * b2 = ask (realtime)
-=item * k2 = change % (realtime)
-=item * c = change and % change
-=item * p = previous close
-=item * c1 = change
-=item * p2 = percent change
-=item * a = ask
+* s = symbol
+* o = open price
+* b2 = ask (realtime)
+* k2 = change % (realtime)
+* c = change and % change
+* p = previous close
+* c1 = change
+* p2 = percent change
+* a = ask
